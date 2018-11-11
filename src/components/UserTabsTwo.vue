@@ -30,17 +30,20 @@
 <script>
 
 import UserTabDummy from './UserTabDummy'
+import UserConnectedDevicesTab from './UserConnectedDevicesTab'
 export default {
   components: {
     // eslint-disable-next-line
-    UserTabDummy
+    UserTabDummy,
+    // eslint-disable-next-line
+    UserConnectedDevicesTab
   },
   data: function() {
     return {
     items: [
+      { name: 'Coneected Devices', component: 'UserConnectedDevicesTab' },
       { name: 'Provider', component: 'UserTabDummy' },
-      { name: 'Insurance', component: 'UserTabDummy' },
-      { name: 'Data', component: 'UserTabDummy' }]
+      { name: 'Insurance', component: 'UserTabDummy' }]
     }
   }
 }

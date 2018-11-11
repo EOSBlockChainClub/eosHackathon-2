@@ -38,7 +38,7 @@ export default {
   },
   data: function() {
     return {
-      name: "Matthew T Brimmer",
+      name: "John J Doe",
       employer: "Super Cool Blockchain Inc.",
       insurance: "Decentralized Healthcare.",
       dateOfBirth: "5/8/1983",
