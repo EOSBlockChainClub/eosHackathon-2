@@ -2,9 +2,8 @@
   <div class="tabs-container">
     <v-tabs
         v-model="active"
-        color="blue"
-        dark
-        slider-color="black"
+        color="#f5f5f5"
+        slider-color="#f5f5f5"
         grow
       >
         <v-tab
@@ -52,7 +51,11 @@ export default {
 
 <style>
   .tabs-container {
-    width: 50%;
+    width: 45%;
     margin: 10px 10px 10px 10px;
+  }
+  .v-tabs__item--active {
+    border: 1px solid #D3D3D3;
+    border-radius: 5px;
   }
 </style>

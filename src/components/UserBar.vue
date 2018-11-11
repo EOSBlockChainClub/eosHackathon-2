@@ -56,7 +56,7 @@ export default {
     width: 95%;
     height: 200px;
     background-color: #f5f5f5;
-    border: 2px solid #2196f3;
+    border: 2px solid #1E90FF;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     margin: auto;
@@ -67,7 +67,10 @@ export default {
   .user-avatar {
     width: 150px;
     height: 150px;
-    background-color: black;
+    background-image: url('../assets/avatar-placeholder.png');
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center;
     margin-left: 25px;
     margin-top: 12.5px;
   }
@@ -99,7 +102,7 @@ export default {
   }
 
   .user-header {
-    background-color: #2196f3;
+    background-color: #1E90FF;
     width: 95%;
     height: 40px;
     margin: 15px auto 0 auto;
