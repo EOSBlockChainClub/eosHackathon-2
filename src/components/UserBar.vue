@@ -18,7 +18,7 @@
         <div class="user-score">{{ score + ' %' }}</div>
         <div class="user-score-container">
           <h3 class="user-text">Improvement</h3>
-          <UserScore :score="score" />
+          <UserScore :score="improvement" />
         </div>
       </div>
     </div>
@@ -30,6 +30,7 @@
 
 import UserScore from './UserScore'
 import UserTextPretty from './UserTextPretty'
+import { mapState } from "vuex";
 
 export default {
   components: {
@@ -43,9 +44,36 @@ export default {
       insurance: "Decentralized Healthcare.",
       dateOfBirth: "5/8/1983",
       gender: 'Male',
-      score: 50
+      score: 0,
+      improvement: 0,
     }
-  }
+  },
+    computed: {
+      ...mapState({
+          myEmployees: "employees"
+      })
+  },
+    watch: {
+      myEmployees: function() {
+          this.getUserData();
+      }
+  },
+  methods: {
+    getUserData() {
+      console.log(JSON.stringify(this.$store.state.scores))
+      if (!this.$store.state.scores) return 0
+      const employeeScores = this.$store.state.scores.filter(item => item.employee == this.$store.state.account)
+      const scores = employeeScores.sort(function compare(a,b) {
+        if (a.timestamp < b.timestamp)
+          return -1;
+        if (a.timestamp > b.timestamp)
+          return 1;
+        return 0;
+      })
+      console.log(JSON.stringify(scores))
+      return scores[0].score
+    }
+  },
 }
 </script>
 
