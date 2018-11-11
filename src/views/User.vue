@@ -45,7 +45,6 @@ export default {
               if (row.employee == this.$store.state.account)
                   return row;
           });
-          console.log(userScores);
       }
   }
 }

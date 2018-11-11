@@ -62,7 +62,6 @@ export default {
   },
   methods: {
     getUserData() {
-      console.log(JSON.stringify(this.$store.state.scores))
       if (!this.$store.state.scores) return 0
       const employeeScores = this.$store.state.scores.filter(item => item.employee == this.$store.state.account)
       const scores = employeeScores.sort(function compare(a,b) {
@@ -72,7 +71,6 @@ export default {
           return 1;
         return 0;
       })
-      console.log(scores.length)
       if (scores.length == 0) return
       this.score = scores[0].score || 0
     }
