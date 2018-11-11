@@ -44,7 +44,7 @@
 import {Actions} from "../actions";
 
 export default {
-    props: ['requestId', 'employeeScore'],
+    props: ['requestId', 'employeeScore', 'rawScores', 'employee'],
     data () {
       return {
         dialog: false
@@ -54,6 +54,22 @@ export default {
         async submitScore() {
             this.dialog = false;
             if (!this.$store.state.scatter) return;
+            const previousScoreArray = this.props.rawScores.filter(item => (
+              item.employee === this.props.employee &&
+              item.status === 1
+            ))
+
+           const sortedScores = previousScore.sort(function compare(a,b) {
+              if (a.timestamp < b.timestamp)
+                return -1;
+              if (a.timestamp > b.timestamp)
+                return 1;
+              return 0;
+            })
+
+            const previousScore = sortScores.length > 0 ? sortedScores[0].score : 50
+            const newScore = previousScore + Math.floor((Math.random() * 10) + 1)
+
             await this.$store.state.eos.transact({
                 actions: [{
                     account: this.$store.state.contract,
@@ -64,7 +80,7 @@ export default {
                     }],
                     data: {
                         id: this.props.requestId,
-                        score: this.props.employeeScore
+                        score: newScore
                     }
                 }]
             }, {
@@ -72,7 +88,7 @@ export default {
                 expireSeconds: 30,
             });
             this.$store.dispatch(Actions.SET_LAST_CHANGE, Date.now());
-        }
+        },
     }
   }
 </script>
