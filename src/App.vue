@@ -2,13 +2,13 @@
   <v-app light>
     <v-toolbar>
       <router-link to="/user">
-        <a class="router-link">User</a>
+        <v-btn><a class="router-link">User</a></v-btn>
       </router-link>
       <router-link to="/enterprise">
-        <a class="router-link">Enterprise</a>
+        <v-btn><a class="router-link">Enterprise</a></v-btn>
       </router-link>
       <router-link to="/provider">
-        <a class="router-link">Provider</a>
+        <v-btn><a class="router-link">Provider</a></v-btn>
       </router-link>
     </v-toolbar>
     <v-content>
@@ -24,7 +24,9 @@ export default {
 </script>
 
 <style>
-  .router-link {
+a{
+    color:black !important;
     margin: 5px 10px 5px 10px;
+    text-decoration: none !important;
   }
 </style>

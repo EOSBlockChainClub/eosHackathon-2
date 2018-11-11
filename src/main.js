@@ -5,6 +5,7 @@ import App from './App.vue'
 import User from './components/User.vue'
 import Enterprise from './components/Enterprise.vue'
 import Provider from './components/Provider.vue'
+import { store } from "./store";
 
 
 const routes = [
@@ -23,5 +24,6 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
+  store,
   render: h => h(App),
 }).$mount('#app')
