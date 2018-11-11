@@ -2,9 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import './plugins/vuetify'
 import App from './App.vue'
-import User from './components/User.vue'
-import Enterprise from './components/Enterprise.vue'
-import Provider from './components/Provider.vue'
+import User from './views/User.vue'
+import Enterprise from './views/Enterprise.vue'
+import Provider from './views/Provider.vue'
 import ScatterJS from 'scatterjs-core';
 import ScatterEOS from 'scatterjs-plugin-eosjs2'
 

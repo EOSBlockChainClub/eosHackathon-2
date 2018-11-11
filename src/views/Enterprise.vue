@@ -35,7 +35,7 @@
             <div><v-btn>Company</v-btn><v-btn>History</v-btn><v-btn>Age</v-btn></div>
           </div>
         </v-card-title>
-        <bar-chart></bar-chart>
+          <bar-chart :height="height"></bar-chart>
       </v-card>
     </v-flex>
   </v-layout>
@@ -48,8 +48,13 @@ export default {
   name: "enterprise",
   components: {
     BarChart
-  }
-};
+  },
+  data() {
+    return {
+      height: window.innerHeight - 374 //header
+    };
+  },
+}
 </script>
 
 <style scoped>
@@ -65,4 +70,5 @@ export default {
     font-size: 36px;
     width:40%;
   }
+
 </style>

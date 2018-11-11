@@ -2,22 +2,19 @@
 <div>
   <user-bar />
   <div class="user-main-container">
-    <user-tabs-one />
-    <user-tabs-two />
+    <provider-tabs />
   </div>
 </div>
 </template>
 
 <script>
-import UserBar from './UserBar'
-import UserTabsOne from './UserTabsOne'
-import UserTabsTwo from './UserTabsTwo'
+import UserBar from '@/components/UserBar'
+import ProviderTabs from '@/components/ProviderTabs'
 
 export default {
   components:{
     UserBar,
-    UserTabsOne,
-    UserTabsTwo
+    ProviderTabs
   }
 }
 </script>
