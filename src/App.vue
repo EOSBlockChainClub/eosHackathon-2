@@ -13,10 +13,10 @@
             <v-btn><a class="router-link">Provider</a></v-btn>
         </router-link>
       </div>
-      <button @click="login" v-if="scatter && !account">Login with Scatter</button>
+      <v-btn @click="login" v-if="scatter && !account">Login with Scatter</v-btn>
       <section class="logged-in-with" v-if="scatter && account">
-        Logged in with: {{account.name}}
-        <button class="small" @click="logout">Logout</button>
+        <v-btn>Logged in as: {{account.name}}</v-btn>
+        <v-btn @click="logout">Logout</v-btn>
       </section>
     </v-toolbar>
     <v-content>
