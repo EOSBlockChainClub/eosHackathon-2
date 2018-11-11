@@ -19,7 +19,6 @@
 <style scoped>
   .inline{
     display:inline-block;
-    max-width: 100%%;
     margin-left:20px;
   }
 </style>

@@ -31,22 +31,22 @@
 <script>
 
 import FormTab from './FormTab.vue'
-import LabTab from './LabTab.vue'
-import IntegrateTab from './LabTab.vue'
+import DialogueProvider from './DialogueProvider.vue'
+import IntegrateTab from './IntegrateTab.vue'
 import RecordsTab from './RecordsTab.vue'
 
 export default {
   components: {
     FormTab,
-    LabTab,
+    DialogueProvider,
     IntegrateTab,
     RecordsTab
   },
   data: function() {
     return {
       items: [
+        { name: 'HL7/Labs', component: 'DialogueProvider' },
         { name: 'Form', component: 'FormTab' },
-        { name: 'HL7/Labs', component: 'LabTab' },
         { name: 'CCD/Records', component: 'RecordsTab' },
         { name: 'Integrate', component: 'IntegrateTab' },
       ]
