@@ -48,13 +48,16 @@ export default {
       improvement: 0,
     }
   },
+    mounted() {
+      this.getUserData();
+    },
     computed: {
       ...mapState({
-          myEmployees: "employees"
+          myScores: "scores"
       })
   },
     watch: {
-      myEmployees: function() {
+      myScores: function() {
           this.getUserData();
       }
   },

@@ -24,7 +24,6 @@
           </v-card>
         </v-tab-item>
     </v-tabs>
-    <provider-select/>
   </div>
 </template>
 
