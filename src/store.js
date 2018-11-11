@@ -25,7 +25,10 @@ const state = {
   account: null,
   contract: contract,
   score: "0%",
-  userScores: null,
+  employees: null,
+  employers: null,
+  providers: null,
+  scores: null,
   network: network,
   rpc: new JsonRpc(network.fullhost(), {fetch}),
   scoreData: [0,50,30,20,10] //testing data
@@ -45,8 +48,17 @@ const mutations = {
         ? state.scatter.identity.accounts[0].name
         : null;
   },
-  [Actions.SET_USER_SCORES]: (state, scores) => {
-      state.userScores = scores;
+  [Actions.SET_EMPLOYEES]: (state, employees) => {
+      state.employees = employees;
+  },
+  [Actions.SET_EMPLOYERS]: (state, employers) => {
+      state.employers = employers;
+  },
+  [Actions.SET_PROVIDERS]: (state, providers) => {
+      state.providers = providers;
+  },
+  [Actions.SET_SCORES]: (state, scores) => {
+      state.scores = scores;
   }
 };
 
@@ -57,8 +69,14 @@ const actions = {
     commit(Actions.SET_SCATTER, scatter),
   [Actions.SET_IDENTITY]: ({ commit }, identity) =>
     commit(Actions.SET_IDENTITY, identity),
-  [Actions.SET_USER_SCORES]: ({ commit }, scores) =>
-    commit(Actions.SET_USER_SCORES, scores)
+  [Actions.SET_EMPLOYEES]: ({ commit }, employees) =>
+    commit(Actions.SET_EMPLOYEES, employees),
+  [Actions.SET_EMPLOYERS]: ({ commit }, employers) =>
+    commit(Actions.SET_EMPLOYERS, employers),
+  [Actions.SET_PROVIDERS]: ({ commit }, providers) =>
+    commit(Actions.SET_PROVIDERS, providers),
+  [Actions.SET_SCORES]: ({ commit }, scores) =>
+    commit(Actions.SET_SCORES, scores)
 };
 
 const getters = {

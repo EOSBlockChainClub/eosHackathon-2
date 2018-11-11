@@ -5,7 +5,7 @@
           <div>
             <h3 class="headline mb-0">Employee</h3>
             <div>
-              <v-text-field label="John Smith" single-line></v-text-field>
+              <v-text-field label="John Doe" single-line></v-text-field>
               <v-text-field label="#12345" single-line></v-text-field>
             </div>
             <div>

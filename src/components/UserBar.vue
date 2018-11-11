@@ -18,7 +18,7 @@
         <div class="user-score">{{ score + ' %' }}</div>
         <div class="user-score-container">
           <h3 class="user-text">Improvement</h3>
-          <UserScore :score="score" />
+          <UserScore :score="improvement" />
         </div>
       </div>
     </div>
@@ -30,6 +30,7 @@
 
 import UserScore from './UserScore'
 import UserTextPretty from './UserTextPretty'
+import { mapState } from "vuex";
 
 export default {
   components: {
@@ -38,14 +39,41 @@ export default {
   },
   data: function() {
     return {
-      name: "John Smith",
+      name: "John J Doe",
       employer: "Super Cool Blockchain Inc.",
       insurance: "Decentralized Healthcare.",
       dateOfBirth: "5/8/1983",
       gender: 'Male',
-      score: 25
+      score: 0,
+      improvement: 0,
     }
-  }
+  },
+    computed: {
+      ...mapState({
+          myEmployees: "employees"
+      })
+  },
+    watch: {
+      myEmployees: function() {
+          this.getUserData();
+      }
+  },
+  methods: {
+    getUserData() {
+      console.log(JSON.stringify(this.$store.state.scores))
+      if (!this.$store.state.scores) return 0
+      const employeeScores = this.$store.state.scores.filter(item => item.employee == this.$store.state.account)
+      const scores = employeeScores.sort(function compare(a,b) {
+        if (a.timestamp < b.timestamp)
+          return -1;
+        if (a.timestamp > b.timestamp)
+          return 1;
+        return 0;
+      })
+      console.log(JSON.stringify(scores))
+      return scores[0].score
+    }
+  },
 }
 </script>
 
@@ -56,7 +84,7 @@ export default {
     width: 95%;
     height: 200px;
     background-color: #f5f5f5;
-    border: 2px solid #1E90FF;
+    border: 2px solid #f5f5f5;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     margin: auto;
@@ -102,7 +130,7 @@ export default {
   }
 
   .user-header {
-    background-color: #1E90FF;
+    background-color: #f5f5f5;
     width: 95%;
     height: 40px;
     margin: 15px auto 0 auto;
@@ -116,7 +144,6 @@ export default {
   .user-score {
     width: 75px;
     height: 75px;
-    border: 2px solid #D3D3D3;
     border-radius: 10px;
     display: flex;
     justify-content: center;

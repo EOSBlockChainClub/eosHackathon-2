@@ -33,6 +33,7 @@
 import UserTabDummy from './UserTabDummy'
 import UserAccountTab from './UserAccountTab'
 import ProviderSelect from './ProviderSelect'
+import UserHistoryTab from './UserHistoryTab'
 
 export default {
   components: {
@@ -40,13 +41,15 @@ export default {
     UserTabDummy,
     // eslint-disable-next-line
     UserAccountTab,
-    ProviderSelect
+    ProviderSelect,
+    // eslint-disable-next-line
+    UserHistoryTab
   },
   data: function() {
     return {
     items: [
+      { name: 'History', component: 'UserHistoryTab' },
       { name: 'Account', component: 'UserAccountTab' },
-      { name: 'History', component: 'UserTabDummy' },
       { name: 'Score', component: 'UserTabDummy' },
       { name: 'Soi', component: 'UserTabDummy' },
       { name: 'Family', component: 'UserTabDummy' }]
@@ -57,7 +60,7 @@ export default {
 
 <style>
   .tabs-container {
-    width: 45%;
+    width: 46%;
     margin: 10px 10px 10px 10px;
   }
   .v-tabs__item--active {
