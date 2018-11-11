@@ -1,16 +1,16 @@
 <template>
   <v-form ref="form" v-model="valid" lazy-validation>
-    <v-checkbox
+    <v-checkbox class="inline"
       v-model="checkbox"
       label="Weight loss program"
       required
     ></v-checkbox>
-    <v-checkbox
+    <v-checkbox class="inline"
       v-model="checkbox"
       label="Nutritionist consultation"
       required
     ></v-checkbox>
-    <v-checkbox
+    <v-checkbox class="inline"
       v-model="checkbox"
       label="Smoking cessation program"
       required
@@ -37,3 +37,11 @@
     <v-btn @click="clear">clear</v-btn>
   </v-form>
 </template>
+
+<style scoped>
+  .inline{
+    display:inline-block;
+    max-width: 25%;
+    margin-left:20px;
+  }
+</style>

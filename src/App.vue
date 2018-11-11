@@ -23,7 +23,7 @@
 </template>
 
 <script>
-    /* eslint-disable no-console */
+    /* eslint-disable no-console,no-debugger */
 
     import ScatterJS from 'scatterjs-core';
     import ScatterEOS from 'scatterjs-plugin-eosjs2';
@@ -47,6 +47,9 @@
                     return;
                 }
                 this.scatter = ScatterJS.scatter;
+                this.$store.dispatch(Actions.SET_SCATTER, ScatterJS.scatter);
+                if (this.scatter.identity)
+                    this.$store.dispatch(Actions.SET_IDENTITY, this.scatter.identity);
             })
         },
 

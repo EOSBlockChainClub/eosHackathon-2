@@ -1,5 +1,5 @@
 <template>
-  <v-layout>
+  <v-layout calss="full-height">
     <v-flex class='one-third'>
       <v-card >
         <v-card-title primary-title>
@@ -29,11 +29,11 @@
     </v-flex>
     <v-flex class ='two-third'>
       <v-card >
-        <v-card-title primary-title>
+        <!-- <v-card-title primary-title>
           <div>
             <div><v-btn>Company</v-btn><v-btn>History</v-btn><v-btn>Age</v-btn></div>
           </div>
-        </v-card-title>
+        </v-card-title> -->
           <bar-chart :height="height"></bar-chart>
       </v-card>
     </v-flex>
@@ -63,7 +63,10 @@ export default {
     font-size: 32px;
   }
   .two-third {
-    width: 60%;
+    width: 50%;
+    height:90%;
+  }
+  .full-height{
     height:100%;
   }
 
