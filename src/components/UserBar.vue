@@ -55,7 +55,7 @@ export default {
           myScores: "scores",
           myAccount: "account"
       })
-  },
+    },
     watch: {
       myScores: function() {
         this.getUserData();

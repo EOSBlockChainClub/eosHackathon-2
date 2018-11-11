@@ -15,9 +15,11 @@ import UserBar from '@/components/UserBar'
 import UserTabsOne from '@/components/UserTabsOne'
 import UserTabsTwo from '@/components/UserTabsTwo'
 import { mapState } from "vuex";
+import { Actions } from "../actions";
 
-export default {
+    export default {
   mounted() {
+    this.$store.dispatch(Actions.SET_PAGE, 'page');
     this.loadUserData();
   },
   computed: {

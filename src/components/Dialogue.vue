@@ -41,8 +41,9 @@
 <script>
 
 import ProviderSelect from './ProviderSelect'
+import {Actions} from "../actions";
 
-  export default {
+export default {
     components: {
       ProviderSelect
     },
@@ -52,10 +53,10 @@ import ProviderSelect from './ProviderSelect'
       }
     },
     methods: {
-        requestScoring() {
+        async requestScoring() {
             this.dialog = false;
             if (!this.$store.state.scatter) return;
-            this.$store.state.eos.transact({
+            await this.$store.state.eos.transact({
                 actions: [{
                     account: this.$store.state.contract,
                     name: 'createreq',
@@ -72,6 +73,7 @@ import ProviderSelect from './ProviderSelect'
                 blocksBehind: 3,
                 expireSeconds: 30,
             });
+            this.$store.dispatch(Actions.SET_LAST_CHANGE, Date.now());
         }
     }
   }

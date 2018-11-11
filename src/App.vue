@@ -32,16 +32,15 @@
     import ScatterEOS from 'scatterjs-plugin-eosjs2';
     import {Api} from 'eosjs';
     import {Actions} from './actions';
+    import { mapState } from "vuex";
     ScatterJS.plugins( new ScatterEOS() );
 
     export default {
-
         data() {
             return {
                 scatter: null
             }
         },
-
         mounted() {
             this.setEosInstance();
             ScatterJS.scatter.connect('wellthy').then(connected => {
@@ -55,8 +54,18 @@
             });
             this.loadData();
         },
-
+        watch: {
+          myLastChange: function() {
+              this.reload();
+          },
+          ['account'](){
+              this.setEosInstance();
+          }
+        },
         computed:{
+            ...mapState({
+                myLastChange: "lastChange"
+            }),
             account(){
                 if(!this.scatter || !this.scatter.identity) return null;
                 return this.scatter.identity.accounts[0];
@@ -132,13 +141,7 @@
                 });
                 this.$store.dispatch(Actions.SET_SCORES, res.rows);
             }
-        },
-        watch:{
-            ['account'](){
-                this.setEosInstance();
-            }
         }
-
     }
 </script>
 

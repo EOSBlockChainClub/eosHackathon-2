@@ -7,7 +7,7 @@
       <v-btn
         slot="activator"
       >
-        Report Requests
+        Submit Score
       </v-btn>
 
       <v-card>
@@ -17,11 +17,6 @@
         >
           Data Request
         </v-card-title>
-
-        <v-card-text>
-          Select employee to process request.
-        </v-card-text>
-        <employee-select/>
         <v-divider></v-divider>
           <v-textarea
             name="input-10-1"
@@ -46,23 +41,20 @@
 
 <script>
 
-import EmployeeSelect from './EmployeeSelect'
+import {Actions} from "../actions";
 
-  export default {
-    components: {
-      EmployeeSelect
-    },
-    props: ['employeeId', 'employeeScore'],
+export default {
+    props: ['requestId', 'employeeScore'],
     data () {
       return {
         dialog: false
       }
     },
     methods: {
-        submitScore() {
+        async submitScore() {
             this.dialog = false;
             if (!this.$store.state.scatter) return;
-            this.$store.state.eos.transact({
+            await this.$store.state.eos.transact({
                 actions: [{
                     account: this.$store.state.contract,
                     name: 'setscore',
@@ -71,14 +63,15 @@ import EmployeeSelect from './EmployeeSelect'
                         permission: 'active',
                     }],
                     data: {
-                        id: 2,
-                        score: 80
+                        id: this.props.requestId,
+                        score: this.props.employeeScore
                     }
                 }]
             }, {
                 blocksBehind: 3,
                 expireSeconds: 30,
             });
+            this.$store.dispatch(Actions.SET_LAST_CHANGE, Date.now());
         }
     }
   }

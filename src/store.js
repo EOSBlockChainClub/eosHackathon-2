@@ -19,10 +19,12 @@ const network = Network.fromJson({
 });
 
 const state = {
+  page: null,
   eos: null,
   scatter: null,
   identity: null,
   account: null,
+  lastChange: null,
   contract: contract,
   score: "0%",
   employees: null,
@@ -35,6 +37,9 @@ const state = {
 };
 
 const mutations = {
+  [Actions.SET_PAGE]: (state, page) => {
+      state.page = page;
+  },
   [Actions.SET_EOS]: (state, eos) => {
     state.eos = eos;
   },
@@ -59,10 +64,15 @@ const mutations = {
   },
   [Actions.SET_SCORES]: (state, scores) => {
       state.scores = scores;
+  },
+  [Actions.SET_LAST_CHANGE]: (state, change) => {
+      state.lastChange = change;
   }
 };
 
 const actions = {
+  [Actions.SET_PAGE]: ({ commit }, page) =>
+    commit(Actions.SET_PAGE, page),
   [Actions.SET_EOS]: ({ commit }, eos) =>
     commit(Actions.SET_EOS, eos),
   [Actions.SET_SCATTER]: ({ commit }, scatter) =>
@@ -76,7 +86,9 @@ const actions = {
   [Actions.SET_PROVIDERS]: ({ commit }, providers) =>
     commit(Actions.SET_PROVIDERS, providers),
   [Actions.SET_SCORES]: ({ commit }, scores) =>
-    commit(Actions.SET_SCORES, scores)
+    commit(Actions.SET_SCORES, scores),
+  [Actions.SET_LAST_CHANGE]: ({ commit }, change) =>
+    commit(Actions.SET_LAST_CHANGE, change)
 };
 
 const getters = {

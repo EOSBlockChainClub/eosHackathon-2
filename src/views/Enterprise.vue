@@ -47,10 +47,15 @@
 
 <script>
 import BarChart from "@/components/BarChart.vue";
+import {Actions} from "../actions";
+
 export default {
   name: "enterprise",
   components: {
     BarChart
+  },
+  mounted() {
+      this.$store.dispatch(Actions.SET_PAGE, 'enterprise');
   },
   data() {
     return {

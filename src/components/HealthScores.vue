@@ -12,9 +12,9 @@
         <td class="text-xs-left">{{ props.item.score }}</td>
         <td
           class="text-xs-right"
-          v-if="props.item.status === 1"
+          v-if="props.item.status === 0"
         >
-          <DialogueProvider employeeId="props.item.id" employeeScore="props.item.score" />
+          <DialogueProvider requestId="props.item.id" employeeScore="props.item.score" />
         </td>
       </template>
     </v-data-table>

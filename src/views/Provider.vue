@@ -10,12 +10,16 @@
 <script>
 import UserBar from '@/components/UserBar'
 import ProviderTabs from '@/components/ProviderTabs'
+import {Actions} from "../actions";
 
 export default {
   components:{
     UserBar,
     ProviderTabs
-  }
+  },
+  mounted() {
+      this.$store.dispatch(Actions.SET_PAGE, 'enterprise');
+  },
 }
 </script>
 
