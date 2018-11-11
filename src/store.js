@@ -1,29 +1,37 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import {Network} from 'scatterjs-core';
+import {JsonRpc} from 'eosjs';
+import {Actions} from './actions';
+
 Vue.use(Vuex);
 
-const Actions = {
-  SET_SCATTER: "SetScatter",
-  SET_IDENTITY: "SetIdentity"
-};
+
+
+const network = Network.fromJson({
+    blockchain: "eos",
+    protocol: "http",
+    host: "hackathon",
+    port: 8888,
+    chainId: "cf057bbfb72640471fd910bcb67639c22df9f92470936cddc1ade0e2f2e7dc4f"
+});
 
 const state = {
+  eos: null,
   scatter: null,
   identity: null,
   account: null,
   contract: "",
   score: "0%",
-  network: {
-    blockchain: "",
-    protocol: "",
-    host: "",
-    port: 443,
-    chainId: ""
-  },
+  network: network,
+  rpc: new JsonRpc(network.fullhost()),
   scoreData: [0,50,30,20,10] //testing data
 };
 
 const mutations = {
+  [Actions.SET_EOS]: (state, eos) => {
+    state.eos = eos;
+  },
   [Actions.SET_SCATTER]: (state, scatter) => {
     state.scatter = scatter;
   },
@@ -37,6 +45,8 @@ const mutations = {
 };
 
 const actions = {
+  [Actions.SET_EOS]: ({ commit }, eos) =>
+    commit(Actions.SET_EOS, eos),
   [Actions.SET_SCATTER]: ({ commit }, scatter) =>
     commit(Actions.SET_SCATTER, scatter),
   [Actions.SET_IDENTITY]: ({ commit }, identity) =>

@@ -10,6 +10,11 @@
       <router-link to="/provider">
         <v-btn><a class="router-link">Provider</a></v-btn>
       </router-link>
+      <button @click="login" v-if="scatter && !account">Login with Scatter</button>
+      <section class="logged-in-with" v-if="scatter && account">
+        Logged in with: {{account.name}}
+        <button class="small" @click="logout">Logout</button>
+      </section>
     </v-toolbar>
     <v-content>
       <router-view/>
@@ -18,9 +23,62 @@
 </template>
 
 <script>
-export default {
+    /* eslint-disable no-console */
 
-}
+    import ScatterJS from 'scatterjs-core';
+    import ScatterEOS from 'scatterjs-plugin-eosjs2';
+    import {Api} from 'eosjs';
+    import {Actions} from './actions';
+    ScatterJS.plugins( new ScatterEOS() );
+
+    export default {
+
+        data() {
+            return {
+                scatter: null
+            }
+        },
+
+        mounted() {
+            this.setEosInstance();
+            ScatterJS.scatter.connect('wellthy').then(connected => {
+                if(!connected){
+                    console.error('Could not connect to Scatter.');
+                    return;
+                }
+                this.scatter = ScatterJS.scatter;
+            })
+        },
+
+        computed:{
+            account(){
+                if(!this.scatter || !this.scatter.identity) return null;
+                return this.scatter.identity.accounts[0];
+            }
+        },
+
+        methods: {
+            login() {
+                this.scatter.getIdentity({accounts: [this.$store.state.network]});
+            },
+            logout() {
+                this.scatter.forgetIdentity();
+            },
+            setEosInstance(){
+                if(this.account){
+                    this.$store.dispatch(Actions.SET_EOS, this.scatter.eos(this.$store.state.network, Api, {rpc: this.$store.state.rpc}));
+                } else {
+                    this.$store.dispatch(Actions.SET_EOS, new Api({ rpc: this.$store.state.rpc }));
+                }
+            },
+        },
+        watch:{
+            ['account'](){
+                this.setEosInstance();
+            }
+        }
+
+    }
 </script>
 
 <style>
