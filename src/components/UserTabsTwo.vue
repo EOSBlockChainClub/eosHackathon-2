@@ -44,7 +44,7 @@ export default {
     return {
     items: [
       { name: 'Provider', component: 'Dialogue' },
-      { name: 'Conected Devices', component: 'UserConnectedDevicesTab' },
+      { name: 'Connected Devices', component: 'UserConnectedDevicesTab' },
       { name: 'Insurance', component: 'UserTabDummy' }]
     }
   }

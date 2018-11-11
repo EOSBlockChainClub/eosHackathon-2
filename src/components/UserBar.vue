@@ -8,7 +8,6 @@
         <UserTextPretty header="Name" :text="name" />
         <UserTextPretty header="Employer" :text="employer" />
         <UserTextPretty header="Insurance" :text="insurance" />
-        <UserTextPretty header="DOB" :text="dateOfBirth" />
       </div>
       <div class="user-info">
         <UserTextPretty header="DOB" :text="dateOfBirth" />
@@ -73,8 +72,9 @@ export default {
           return 1;
         return 0;
       })
-      console.log(JSON.stringify(scores))
-      return scores[0].score
+      console.log(scores.length)
+      if (scores.length == 0) return
+      this.score = scores[0].score || 0
     }
   },
 }
