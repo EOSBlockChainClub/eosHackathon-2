@@ -30,16 +30,19 @@
 <script>
 
 import UserTabDummy from './UserTabDummy'
+import UserAccountTab from './UserAccountTab'
 
 export default {
   components: {
     // eslint-disable-next-line
     UserTabDummy,
+    // eslint-disable-next-line
+    UserAccountTab
   },
   data: function() {
     return {
     items: [
-      { name: 'Account', component: 'UserTabDummy' },
+      { name: 'Account', component: 'UserAccountTab' },
       { name: 'History', component: 'UserTabDummy' },
       { name: 'Score', component: 'UserTabDummy' },
       { name: 'Soi', component: 'UserTabDummy' },
