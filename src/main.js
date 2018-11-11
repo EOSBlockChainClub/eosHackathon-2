@@ -5,6 +5,10 @@ import App from './App.vue'
 import User from './components/User.vue'
 import Enterprise from './components/Enterprise.vue'
 import Provider from './components/Provider.vue'
+import ScatterJS from 'scatterjs-core';
+import ScatterEOS from 'scatterjs-plugin-eosjs2'
+
+ScatterJS.plugins( new ScatterEOS() );
 import { store } from "./store";
 
 
