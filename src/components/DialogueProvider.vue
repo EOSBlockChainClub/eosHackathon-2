@@ -28,7 +28,7 @@
           <v-spacer></v-spacer>
           <v-btn
             flat
-            @click="dialog = false"
+            @click="submitScore()"
           >
             Process Request
           </v-btn>
@@ -50,6 +50,29 @@ import EmployeeSelect from './EmployeeSelect'
       return {
         dialog: false
       }
+    },
+    methods: {
+        submitScore() {
+            this.dialog = false;
+            if (!this.$store.state.scatter) return;
+            this.$store.state.eos.transact({
+                actions: [{
+                    account: this.$store.state.contract,
+                    name: 'setscore',
+                    authorization: [{
+                        actor: this.$store.state.account,
+                        permission: 'active',
+                    }],
+                    data: {
+                        id: 2,
+                        score: 80
+                    }
+                }]
+            }, {
+                blocksBehind: 3,
+                expireSeconds: 30,
+            });
+        }
     }
   }
 </script>
