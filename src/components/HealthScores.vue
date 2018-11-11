@@ -14,7 +14,12 @@
           class="text-xs-right"
           v-if="props.item.status === 0"
         >
-          <DialogueProvider requestId="props.item.id" employeeScore="props.item.score" />
+          <DialogueProvider
+            requestId="props.item.id"
+            employeeScore="props.item.score"
+            rawScores="rawScores"
+            employee="props.item.employee"
+            />
         </td>
       </template>
     </v-data-table>
@@ -31,6 +36,7 @@ export default {
   data: function() {
     return {
       scoreTable: [],
+      previousScore: 50,
       headers: [
         { text: 'Id', value: 'id' },
         { text: 'Employee', value: 'employee' },
@@ -58,6 +64,7 @@ export default {
   },
   methods: {
     getUserData() {
+      this.rawScores = this.$store.state.scores
       if (!this.$store.state.scores || !this.$store.state.account) return 0;
       const employeeScores = this.$store.state.scores.filter(item => item.provider == this.$store.state.account)
       const scores = employeeScores.sort(function compare(a,b) {
@@ -67,9 +74,8 @@ export default {
           return 1;
         return 0;
       })
-      console.log(scores)
         this.scoreTable = scores
-    }
+    },
   },
 }
 </script>
