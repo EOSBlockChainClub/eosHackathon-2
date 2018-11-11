@@ -2,7 +2,7 @@
   <div class="text-xs-center">
     <v-dialog
       v-model="dialog"
-      width="500"
+      width="750"
     >
       <v-btn
         slot="activator"
@@ -23,7 +23,13 @@
         </v-card-text>
         <employee-select/>
         <v-divider></v-divider>
-
+          <v-textarea
+            name="input-10-1"
+            label="HL7/LABS Data"
+            value=""
+            hint="Input HL7/LABS"
+          ></v-textarea>
+          <v-divider></v-divider>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
@@ -46,6 +52,7 @@ import EmployeeSelect from './EmployeeSelect'
     components: {
       EmployeeSelect
     },
+    props: ['employeeId', 'employeeScore'],
     data () {
       return {
         dialog: false

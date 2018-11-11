@@ -14,10 +14,10 @@
         <UserTextPretty header="Gender" :text="gender" />
       </div>
       <div class="user-improvement">
-        <div class="user-score">{{ score + ' %' }}</div>
+        <div class="user-score">{{ improvement + ' %' }}</div>
         <div class="user-score-container">
           <h3 class="user-text">Improvement</h3>
-          <UserScore :score="improvement" />
+          <UserScore :score="score" />
         </div>
       </div>
     </div>
@@ -58,7 +58,7 @@ export default {
   },
     watch: {
       myScores: function() {
-          this.getUserData();
+        this.getUserData();
       },
       myAccount: function() {
         this.getUserData();
@@ -66,9 +66,13 @@ export default {
   },
   methods: {
     getUserData() {
-      console.log(JSON.stringify(this.$store.state.scores))
       if (!this.$store.state.scores || !this.$store.state.account) return 0;
-      const employeeScores = this.$store.state.scores.filter(item => item.employee == this.$store.state.account)
+      const employeeScores = this.$store.state.scores.filter(item => {
+        return (
+          item.employee == this.$store.state.account &&
+          item.status ===1
+        )
+      })
       const scores = employeeScores.sort(function compare(a,b) {
         if (a.timestamp < b.timestamp)
           return -1;
@@ -76,9 +80,12 @@ export default {
           return 1;
         return 0;
       })
-      console.log(scores.length)
-      if (scores.length == 0) return
-      this.score = scores[0].score || 0
+        if (scores.length === 0) return
+        this.score = scores[0].score || 0
+
+      if (scores.length > 1) {
+        this.improvement = scores[0].score - scores[1].score || 0
+      }
     }
   },
 }

@@ -34,18 +34,20 @@ import FormTab from './FormTab.vue'
 import DialogueProvider from './DialogueProvider.vue'
 import IntegrateTab from './IntegrateTab.vue'
 import RecordsTab from './RecordsTab.vue'
+import HealthScores from './HealthScores'
 
 export default {
   components: {
     FormTab,
     DialogueProvider,
     IntegrateTab,
-    RecordsTab
+    RecordsTab,
+    HealthScores
   },
   data: function() {
     return {
       items: [
-        { name: 'HL7/Labs', component: 'DialogueProvider' },
+        { name: 'HL7/Labs', component: 'HealthScores' },
         { name: 'Form', component: 'FormTab' },
         { name: 'CCD/Records', component: 'RecordsTab' },
         { name: 'Integrate', component: 'IntegrateTab' },
