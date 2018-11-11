@@ -15,7 +15,6 @@ import UserBar from './UserBar'
 import UserTabsOne from './UserTabsOne'
 import UserTabsTwo from './UserTabsTwo'
 import { mapState } from "vuex";
-import {Actions} from '../actions';
 
 export default {
   mounted() {
@@ -38,22 +37,15 @@ export default {
     UserTabsTwo
   },
   methods: {
-      loadUserData() {
-        if (!this.$store.state.account)
+      async loadUserData() {
+        if (!this.$store.employees)
             return;
 
-        this.$store.state.rpc.get_table_rows({
-            json: true,
-            code: this.$store.state.contract,
-            scope: this.$store.state.contract,
-            table: "healthscores",
-            limit: 10000
-        }).then(res => {
-            this.$store.dispatch(Actions.SET_USER_SCORES, res.rows.filter(row => {
-                if (row.employee == this.$store.state.account)
-                    return row;
-            }));
-        });
+          let userScores = this.$store.scores.filter(row => {
+              if (row.employee == this.$store.state.account)
+                  return row;
+          });
+          console.log(userScores);
       }
   }
 }
