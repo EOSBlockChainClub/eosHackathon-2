@@ -1,15 +1,18 @@
 <template>
   <v-app light>
     <v-toolbar>
-      <router-link to="/user">
-        <v-btn><a class="router-link">User</a></v-btn>
-      </router-link>
-      <router-link to="/enterprise">
-        <v-btn><a class="router-link">Enterprise</a></v-btn>
-      </router-link>
-      <router-link to="/provider">
-        <v-btn><a class="router-link">Provider</a></v-btn>
-      </router-link>
+      <div class="logo"/>
+      <div class="navbar-app">
+        <router-link to="/user">
+            <v-btn><a class="router-link">User</a></v-btn>
+        </router-link>
+        <router-link to="/enterprise">
+            <v-btn><a class="router-link">Enterprise</a></v-btn>
+        </router-link>
+        <router-link to="/provider">
+            <v-btn><a class="router-link">Provider</a></v-btn>
+        </router-link>
+      </div>
       <button @click="login" v-if="scatter && !account">Login with Scatter</button>
       <section class="logged-in-with" v-if="scatter && account">
         Logged in with: {{account.name}}
@@ -137,5 +140,18 @@ a{
     color:black !important;
     margin: 5px 10px 5px 10px;
     text-decoration: none !important;
+  }
+
+  .logo {
+      background-image: url('./assets/log-t.png');
+      background-size:     cover;                      /* <------ */
+      background-repeat:   no-repeat;
+      background-position: center center;
+      width: 125px;
+      height: 50px;
+  }
+
+  .navbar-app {
+      margin-left: auto;
   }
 </style>

@@ -48,7 +48,7 @@ export default {
 
 <style>
   .tabs-container {
-    width: 45%;
+    width: 46%;
     margin: 10px 10px 10px 10px;
   }
 </style>

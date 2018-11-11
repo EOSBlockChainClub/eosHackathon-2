@@ -43,7 +43,7 @@ export default {
       insurance: "Decentralized Healthcare.",
       dateOfBirth: "5/8/1983",
       gender: 'Male',
-      score: 25
+      score: 50
     }
   }
 }
@@ -56,7 +56,7 @@ export default {
     width: 95%;
     height: 200px;
     background-color: #f5f5f5;
-    border: 2px solid #1E90FF;
+    border: 2px solid #f5f5f5;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     margin: auto;
@@ -102,7 +102,7 @@ export default {
   }
 
   .user-header {
-    background-color: #1E90FF;
+    background-color: #f5f5f5;
     width: 95%;
     height: 40px;
     margin: 15px auto 0 auto;
@@ -116,7 +116,6 @@ export default {
   .user-score {
     width: 75px;
     height: 75px;
-    border: 2px solid #D3D3D3;
     border-radius: 10px;
     display: flex;
     justify-content: center;
