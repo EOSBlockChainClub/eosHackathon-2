@@ -46,7 +46,7 @@ export default {
       { name: 'History', component: 'UserTabDummy' },
       { name: 'Score', component: 'UserTabDummy' },
       { name: 'Soi', component: 'UserTabDummy' },
-      { name: 'Famliy', component: 'UserTabDummy' }]
+      { name: 'Family', component: 'UserTabDummy' }]
     }
   }
 }
