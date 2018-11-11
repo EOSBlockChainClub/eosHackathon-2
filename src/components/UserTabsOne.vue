@@ -32,7 +32,6 @@
 
 import UserTabDummy from './UserTabDummy'
 import UserAccountTab from './UserAccountTab'
-import ProviderSelect from './ProviderSelect'
 import UserHistoryTab from './UserHistoryTab'
 
 export default {
@@ -41,7 +40,6 @@ export default {
     UserTabDummy,
     // eslint-disable-next-line
     UserAccountTab,
-    ProviderSelect,
     // eslint-disable-next-line
     UserHistoryTab
   },

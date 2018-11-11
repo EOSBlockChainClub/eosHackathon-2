@@ -31,18 +31,20 @@
 
 import UserTabDummy from './UserTabDummy'
 import UserConnectedDevicesTab from './UserConnectedDevicesTab'
+import Dialogue from './Dialogue.vue'
 export default {
   components: {
     // eslint-disable-next-line
     UserTabDummy,
+    Dialogue,
     // eslint-disable-next-line
     UserConnectedDevicesTab
   },
   data: function() {
     return {
     items: [
-      { name: 'Coneected Devices', component: 'UserConnectedDevicesTab' },
-      { name: 'Provider', component: 'UserTabDummy' },
+      { name: 'Provider', component: 'Dialogue' },
+      { name: 'Conected Devices', component: 'UserConnectedDevicesTab' },
       { name: 'Insurance', component: 'UserTabDummy' }]
     }
   }

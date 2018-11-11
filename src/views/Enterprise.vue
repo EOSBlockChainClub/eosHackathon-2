@@ -33,6 +33,14 @@
         </v-card-title> -->
           <bar-chart :height="height"></bar-chart>
       </v-card>
+      <v-card >
+        <!-- <v-card-title primary-title>
+          <div>
+            <div><v-btn>Company</v-btn><v-btn>History</v-btn><v-btn>Age</v-btn></div>
+          </div>
+        </v-card-title> -->
+          <bar-chart :height="height"></bar-chart>
+      </v-card>
   </v-layout>
 </template>
 
