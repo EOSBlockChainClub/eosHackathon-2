@@ -6,8 +6,8 @@
     <div class="user-score">{{ score + ' %' }}</div>
     <div class="user-info-container">
       <div class="user-info">
-        <p class="user-text">{{ name }}</p>
-        <p class="user-text">{{ id }}</p>
+        <UserTextPretty header="Name" :text="name" />
+        <p class="user-text">{{ employer }}</p>
         <p class="user-text">{{ other }}</p>
         <p class="user-text">{{ otherTwo }}</p>
       </div>
@@ -23,16 +23,18 @@
 <script>
 
 import UserScore from './UserScore'
+import UserTextPretty from './UserTextPretty'
 
 export default {
   components: {
-    UserScore
+    UserScore,
+    UserTextPretty
   },
   data: function() {
     return {
-      name: "PLACEHOLDER",
-      id: "PLACEHOLDER",
-      other: "PLACEHOLDER",
+      name: "NAME",
+      employer: "PLACEHOLDER",
+      insurance: "PLACEHOLDER",
       otherTwo: "PLACEHOLDER",
       score: 25
     }
@@ -45,8 +47,11 @@ export default {
 <style>
   .user-container {
     width: 95%;
-    height: 150px;
+    height: 200px;
     background-color: #f5f5f5;
+    border: 2px solid #2196f3;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     margin: auto;
     display: flex;
     flex-direction: row;
