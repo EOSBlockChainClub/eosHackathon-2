@@ -2,10 +2,10 @@
   <div class="tabs-container">
     <v-tabs
         v-model="active"
-        color="blue"
         dark
-        slider-color="black"
         grow
+        color="#f5f5f5"
+        slider-color="#f5f5f5"
       >
         <v-tab
           v-for="(item, key) in items"
@@ -30,19 +30,22 @@
 
 <script>
 
-import UserTabDummy from './UserTabDummy'
+import FormTab from './FormTab.vue'
+import LabTab from './LabTab.vue'
+import RecordsTab from './RecordsTab.vue'
 
 export default {
   components: {
-    // eslint-disable-next-line
-    UserTabDummy,
+    FormTab,
+    LabTab,
+    RecordsTab
   },
   data: function() {
     return {
       items: [
-        { name: 'Form', component: 'UserTabDummy' },
-        { name: 'HL7/Labs', component: 'UserTabDummy' },
-        { name: 'CCD/Records', component: 'UserTabDummy' },
+        { name: 'Form', component: 'FormTab' },
+        { name: 'HL7/Labs', component: 'LabTab' },
+        { name: 'CCD/Records', component: 'RecordsTab' },
       ]
     }
   }

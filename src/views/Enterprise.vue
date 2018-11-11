@@ -6,23 +6,22 @@
           <div>
             <h3 class="headline mb-0">Employee</h3>
             <div>
-              <input class='small-field'  placeholder="Name">
-              <input class='small-field'  placeholder="#">
+              <v-text-field label="Name" single-line></v-text-field>
+              <v-text-field label="#" single-line></v-text-field>
             </div>
             <div>
               <h3 class="headline mb-0">Score</h3>
             </div>
             <div>
-              <span class='small-field'>34</span>% Improvement
-              <span class='small-field'>34</span>% HX
+              <span>34</span>% Improvement
             </div>
             <div>
               <h3 class="headline mb-0">Cost Savings Score</h3>
-              <span class='small-field'>34</span>% HX
+              <span>34</span>%
             </div>
             <div>
               <h3 class="headline mb-0">Retention Score</h3>
-              <span class='small-field'>34</span>% HX
+              <span>34</span>%
             </div>
           </div>
         </v-card-title>
@@ -61,14 +60,11 @@ export default {
   .one-third {
     width: 30%;
     height:100%;
+    font-size: 32px;
   }
   .two-third {
     width: 60%;
     height:100%;
-  }
-  .small-field {
-    font-size: 36px;
-    width:40%;
   }
 
 </style>

@@ -2,9 +2,8 @@
   <div class="tabs-container">
     <v-tabs
         v-model="active"
-        color="blue"
-        dark
-        slider-color="black"
+        color="#f5f5f5"
+        slider-color="#f5f5f5"
         grow
       >
         <v-tab
@@ -31,20 +30,23 @@
 <script>
 
 import UserTabDummy from './UserTabDummy'
+import UserAccountTab from './UserAccountTab'
 
 export default {
   components: {
     // eslint-disable-next-line
     UserTabDummy,
+    // eslint-disable-next-line
+    UserAccountTab
   },
   data: function() {
     return {
     items: [
-      { name: 'Account', component: 'UserTabDummy' },
+      { name: 'Account', component: 'UserAccountTab' },
       { name: 'History', component: 'UserTabDummy' },
       { name: 'Score', component: 'UserTabDummy' },
       { name: 'Soi', component: 'UserTabDummy' },
-      { name: 'Famliy', component: 'UserTabDummy' }]
+      { name: 'Family', component: 'UserTabDummy' }]
     }
   }
 }
@@ -52,7 +54,11 @@ export default {
 
 <style>
   .tabs-container {
-    width: 50%;
+    width: 45%;
     margin: 10px 10px 10px 10px;
+  }
+  .v-tabs__item--active {
+    border: 1px solid #D3D3D3;
+    border-radius: 5px;
   }
 </style>

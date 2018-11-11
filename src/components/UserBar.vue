@@ -3,17 +3,23 @@
 <div class="user-header"><h3>User Information</h3></div>
   <div class="user-container">
     <div class="user-avatar"></div>
-    <div class="user-score">{{ score + ' %' }}</div>
     <div class="user-info-container">
       <div class="user-info">
         <UserTextPretty header="Name" :text="name" />
-        <p class="user-text">{{ employer }}</p>
-        <p class="user-text">{{ other }}</p>
-        <p class="user-text">{{ otherTwo }}</p>
+        <UserTextPretty header="Employer" :text="employer" />
+        <UserTextPretty header="Insurance" :text="insurance" />
+        <UserTextPretty header="DOB" :text="dateOfBirth" />
+      </div>
+      <div class="user-info">
+        <UserTextPretty header="DOB" :text="dateOfBirth" />
+        <UserTextPretty header="Gender" :text="gender" />
       </div>
       <div class="user-improvement">
-        <h3 class="user-text">Improvement</h3>
-        <UserScore :score="score" />
+        <div class="user-score">{{ score + ' %' }}</div>
+        <div class="user-score-container">
+          <h3 class="user-text">Improvement</h3>
+          <UserScore :score="score" />
+        </div>
       </div>
     </div>
   </div>
@@ -32,10 +38,11 @@ export default {
   },
   data: function() {
     return {
-      name: "NAME",
-      employer: "PLACEHOLDER",
-      insurance: "PLACEHOLDER",
-      otherTwo: "PLACEHOLDER",
+      name: "Matthew T Brimmer",
+      employer: "Super Cool Blockchain Inc.",
+      insurance: "Decentralized Healthcare.",
+      dateOfBirth: "5/8/1983",
+      gender: 'Male',
       score: 25
     }
   }
@@ -49,7 +56,7 @@ export default {
     width: 95%;
     height: 200px;
     background-color: #f5f5f5;
-    border: 2px solid #2196f3;
+    border: 2px solid #1E90FF;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     margin: auto;
@@ -58,18 +65,21 @@ export default {
   }
 
   .user-avatar {
-    width: 75px;
-    height: 75px;
-    background-color: black;
+    width: 150px;
+    height: 150px;
+    background-image: url('../assets/avatar-placeholder.png');
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center;
     margin-left: 25px;
-    margin-top: 37.5px;
+    margin-top: 12.5px;
   }
 
   .user-info-container {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    margin-left: 20px;
+    margin-left: 120px;
   }
 
   .user-info {
@@ -92,26 +102,33 @@ export default {
   }
 
   .user-header {
-    background-color: #2196f3;
+    background-color: #1E90FF;
     width: 95%;
-    max-height: 40px;
+    height: 40px;
     margin: 15px auto 0 auto;
     padding-left: 15px;
+    padding-top: 10px;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
+    justify-content: center;
   }
 
   .user-score {
     width: 75px;
     height: 75px;
-    margin-left: 200px;
-    margin-top: 37.5px;
-    border: 2px solid black;
+    border: 2px solid #D3D3D3;
     border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     font: bold;
     font-size: 25px;
+  }
+
+  .user-score-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center
   }
 </style>
