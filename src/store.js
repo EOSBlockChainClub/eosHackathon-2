@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 import Vue from "vue";
 import Vuex from "vuex";
 import {Network} from 'scatterjs-core';
@@ -7,6 +8,7 @@ import {Actions} from './actions';
 Vue.use(Vuex);
 
 
+const contract = "test1";
 
 const network = Network.fromJson({
     blockchain: "eos",
@@ -21,10 +23,11 @@ const state = {
   scatter: null,
   identity: null,
   account: null,
-  contract: "",
+  contract: contract,
   score: "0%",
+  userScores: null,
   network: network,
-  rpc: new JsonRpc(network.fullhost()),
+  rpc: new JsonRpc(network.fullhost(), {fetch}),
   scoreData: [0,50,30,20,10] //testing data
 };
 
@@ -41,6 +44,9 @@ const mutations = {
       identity && identity.accounts && identity.accounts.length > 0
         ? state.scatter.identity.accounts[0].name
         : null;
+  },
+  [Actions.SET_USER_SCORES]: (state, scores) => {
+      state.userScores = scores;
   }
 };
 
@@ -50,12 +56,12 @@ const actions = {
   [Actions.SET_SCATTER]: ({ commit }, scatter) =>
     commit(Actions.SET_SCATTER, scatter),
   [Actions.SET_IDENTITY]: ({ commit }, identity) =>
-    commit(Actions.SET_IDENTITY, identity)
+    commit(Actions.SET_IDENTITY, identity),
+  [Actions.SET_USER_SCORES]: ({ commit }, scores) =>
+    commit(Actions.SET_USER_SCORES, scores)
 };
 
 const getters = {
-  account: state => state.account,
-  supply: state => state.supply,
   scoreData: state => state.scoreData,
   networkUrl: state =>
     state.network
