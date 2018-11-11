@@ -28,7 +28,7 @@
           <v-spacer></v-spacer>
           <v-btn
             flat
-            @click="dialog = false"
+            @click="requestScoring()"
           >
             Get Results
           </v-btn>
@@ -50,6 +50,29 @@ import ProviderSelect from './ProviderSelect'
       return {
         dialog: false
       }
+    },
+    methods: {
+        requestScoring() {
+            this.dialog = false;
+            if (!this.$store.state.scatter) return;
+            this.$store.state.eos.transact({
+                actions: [{
+                    account: this.$store.state.contract,
+                    name: 'createreq',
+                    authorization: [{
+                        actor: this.$store.state.account,
+                        permission: 'active',
+                    }],
+                    data: {
+                        employee: this.$store.state.account,
+                        provider: 'provider1'
+                    }
+                }]
+            }, {
+                blocksBehind: 3,
+                expireSeconds: 30,
+            });
+        }
     }
   }
 </script>
