@@ -1,0 +1,320 @@
+{
+    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT Sat Nov 10 20:35:51 2018",
+    "version": "eosio::abi/1.0",
+    "structs": [
+        {
+            "name": "addemployee",
+            "base": "",
+            "fields": [
+                {
+                    "name": "employee",
+                    "type": "name"
+                },
+                {
+                    "name": "employer",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "approveprd",
+            "base": "",
+            "fields": [
+                {
+                    "name": "employer",
+                    "type": "name"
+                },
+                {
+                    "name": "provider",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "approvereq",
+            "base": "",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "createreq",
+            "base": "",
+            "fields": [
+                {
+                    "name": "employee",
+                    "type": "name"
+                },
+                {
+                    "name": "provider",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "datarequest",
+            "base": "",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "employee",
+                    "type": "name"
+                },
+                {
+                    "name": "requestor",
+                    "type": "name"
+                },
+                {
+                    "name": "status",
+                    "type": "uint16"
+                },
+                {
+                    "name": "timestamp",
+                    "type": "uint32"
+                }
+            ]
+        },
+        {
+            "name": "denyreq",
+            "base": "",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "employee",
+            "base": "",
+            "fields": [
+                {
+                    "name": "employee",
+                    "type": "name"
+                },
+                {
+                    "name": "employer",
+                    "type": "name"
+                },
+                {
+                    "name": "trusted_providers",
+                    "type": "name[]"
+                }
+            ]
+        },
+        {
+            "name": "employer",
+            "base": "",
+            "fields": [
+                {
+                    "name": "employer",
+                    "type": "name"
+                },
+                {
+                    "name": "approved_providers",
+                    "type": "name[]"
+                }
+            ]
+        },
+        {
+            "name": "healthscore",
+            "base": "",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "employee",
+                    "type": "name"
+                },
+                {
+                    "name": "status",
+                    "type": "uint16"
+                },
+                {
+                    "name": "provider",
+                    "type": "name"
+                },
+                {
+                    "name": "timestamp",
+                    "type": "uint32"
+                },
+                {
+                    "name": "score",
+                    "type": "uint16"
+                }
+            ]
+        },
+        {
+            "name": "provider",
+            "base": "",
+            "fields": [
+                {
+                    "name": "provider",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "regemployer",
+            "base": "",
+            "fields": [
+                {
+                    "name": "employer",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "regprovider",
+            "base": "",
+            "fields": [
+                {
+                    "name": "provider",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "requestdata",
+            "base": "",
+            "fields": [
+                {
+                    "name": "requestor",
+                    "type": "name"
+                },
+                {
+                    "name": "employee",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "setscore",
+            "base": "",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "score",
+                    "type": "uint16"
+                }
+            ]
+        },
+        {
+            "name": "trustprd",
+            "base": "",
+            "fields": [
+                {
+                    "name": "employee",
+                    "type": "name"
+                },
+                {
+                    "name": "provider",
+                    "type": "name"
+                }
+            ]
+        }
+    ],
+    "types": [],
+    "actions": [
+        {
+            "name": "addemployee",
+            "type": "addemployee",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "approveprd",
+            "type": "approveprd",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "approvereq",
+            "type": "approvereq",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "createreq",
+            "type": "createreq",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "denyreq",
+            "type": "denyreq",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "regemployer",
+            "type": "regemployer",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "regprovider",
+            "type": "regprovider",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "requestdata",
+            "type": "requestdata",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "setscore",
+            "type": "setscore",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "trustprd",
+            "type": "trustprd",
+            "ricardian_contract": ""
+        }
+    ],
+    "tables": [
+        {
+            "name": "datarequests",
+            "type": "datarequest",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "employees",
+            "type": "employee",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "employers",
+            "type": "employer",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "healthscores",
+            "type": "healthscore",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "providers",
+            "type": "provider",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        }
+    ],
+    "ricardian_clauses": [],
+    "abi_extensions": []
+}
