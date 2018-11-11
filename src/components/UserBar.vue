@@ -73,13 +73,15 @@ export default {
           item.status ===1
         )
       })
+      console.log(employeeScores)
       const scores = employeeScores.sort(function compare(a,b) {
-        if (a.timestamp < b.timestamp)
-          return -1;
         if (a.timestamp > b.timestamp)
+          return -1;
+        if (a.timestamp < b.timestamp)
           return 1;
         return 0;
       })
+      console.log('SORTED',scores)
         if (scores.length === 0) return
         this.score = scores[0].score || 0
 
