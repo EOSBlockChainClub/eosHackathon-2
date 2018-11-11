@@ -24,6 +24,7 @@
           </v-card>
         </v-tab-item>
     </v-tabs>
+    <provider-select/>
   </div>
 </template>
 
@@ -31,13 +32,15 @@
 
 import UserTabDummy from './UserTabDummy'
 import UserAccountTab from './UserAccountTab'
+import ProviderSelect from './ProviderSelect'
 
 export default {
   components: {
     // eslint-disable-next-line
     UserTabDummy,
     // eslint-disable-next-line
-    UserAccountTab
+    UserAccountTab,
+    ProviderSelect
   },
   data: function() {
     return {
