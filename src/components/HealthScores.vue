@@ -6,7 +6,6 @@
       class="elevation-1"
     >
       <template slot="items" slot-scope="props" >
-        <tr @click="setUser(props.item.employee)">
         <td class="text-xs-left">{{ props.item.id }}</td>
         <td class="text-xs-left">{{ props.item.employee }}</td>
         <td class="text-xs-left">{{ props.item.status === 0 ? 'Requested' : 'Submitted' }}</td>
