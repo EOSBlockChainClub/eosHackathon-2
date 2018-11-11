@@ -24,7 +24,6 @@
           </v-card>
         </v-tab-item>
     </v-tabs>
-    <provider-select/>
   </div>
 </template>
 
@@ -41,7 +40,6 @@ export default {
     UserTabDummy,
     // eslint-disable-next-line
     UserAccountTab,
-    ProviderSelect,
     // eslint-disable-next-line
     UserHistoryTab
   },

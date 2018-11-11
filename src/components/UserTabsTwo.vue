@@ -41,7 +41,7 @@ export default {
   data: function() {
     return {
     items: [
-      { name: 'Coneected Devices', component: 'UserConnectedDevicesTab' },
+      { name: 'Connected Devices', component: 'UserConnectedDevicesTab' },
       { name: 'Provider', component: 'UserTabDummy' },
       { name: 'Insurance', component: 'UserTabDummy' }]
     }
