@@ -5,7 +5,8 @@
       :items="scoreTable"
       class="elevation-1"
     >
-      <template slot="items" slot-scope="props">
+      <template slot="items" slot-scope="props" >
+        <tr @click="setUser(props.item.employee)">
         <td class="text-xs-left">{{ props.item.id }}</td>
         <td class="text-xs-left">{{ props.item.employee }}</td>
         <td class="text-xs-left">{{ props.item.status === 0 ? 'Requested' : 'Submitted' }}</td>
@@ -15,10 +16,10 @@
           v-if="props.item.status === 0"
         >
           <DialogueProvider
-            requestId="props.item.id"
-            employeeScore="props.item.score"
-            rawScores="rawScores"
-            employee="props.item.employee"
+            :requestId="props.item.id"
+            :employeeScore="props.item.score"
+            :rawScores="rawScores"
+            :employee="props.item.employee"
             />
         </td>
       </template>
@@ -29,6 +30,8 @@
 <script>
 import { mapState } from "vuex";
 import DialogueProvider from './DialogueProvider.vue'
+import {Actions} from "../actions";
+
 export default {
   components: {
     DialogueProvider,
@@ -63,6 +66,10 @@ export default {
       }
   },
   methods: {
+    setUser(user) {
+        debugger;
+        this.$store.dispatch(Actions.SET_SELECTED_USER, user);
+    },
     getUserData() {
       this.rawScores = this.$store.state.scores
       if (!this.$store.state.scores || !this.$store.state.account) return 0;

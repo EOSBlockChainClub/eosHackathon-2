@@ -22,11 +22,14 @@ const state = {
   page: null,
   eos: null,
   scatter: null,
+  employee: 'employee2',
+  provider: 'provider2',
   identity: null,
   account: null,
   lastChange: null,
   contract: contract,
   score: "0%",
+  selectedUser: null,
   employees: null,
   employers: null,
   providers: null,
@@ -67,6 +70,9 @@ const mutations = {
   },
   [Actions.SET_LAST_CHANGE]: (state, change) => {
       state.lastChange = change;
+  },
+  [Actions.SET_SELECTED_USER]: (state, user) => {
+      state.selectedUser = user;
   }
 };
 
@@ -88,7 +94,9 @@ const actions = {
   [Actions.SET_SCORES]: ({ commit }, scores) =>
     commit(Actions.SET_SCORES, scores),
   [Actions.SET_LAST_CHANGE]: ({ commit }, change) =>
-    commit(Actions.SET_LAST_CHANGE, change)
+    commit(Actions.SET_LAST_CHANGE, change),
+  [Actions.SET_SELECTED_USER]: ({ commit }, user) =>
+    commit(Actions.SET_SELCTED_USER, user)
 };
 
 const getters = {

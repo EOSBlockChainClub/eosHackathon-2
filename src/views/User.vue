@@ -19,7 +19,7 @@ import { Actions } from "../actions";
 
     export default {
   mounted() {
-    this.$store.dispatch(Actions.SET_PAGE, 'page');
+    this.$store.dispatch(Actions.SET_PAGE, 'user');
     this.loadUserData();
   },
   computed: {

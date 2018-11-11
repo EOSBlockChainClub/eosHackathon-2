@@ -30,7 +30,7 @@
             flat
             @click="requestScoring()"
           >
-            Get Results
+            Submit
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -65,8 +65,8 @@ export default {
                         permission: 'active',
                     }],
                     data: {
-                        employee: this.$store.state.account,
-                        provider: 'provider1'
+                        employee: this.$store.state.employee,
+                        provider: this.$store.state.provider
                     }
                 }]
             }, {

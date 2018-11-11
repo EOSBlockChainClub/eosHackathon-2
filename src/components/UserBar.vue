@@ -45,6 +45,7 @@ export default {
       gender: 'Male',
       score: 0,
       improvement: 0,
+      user: null
     }
   },
     mounted() {
@@ -53,7 +54,9 @@ export default {
     computed: {
       ...mapState({
           myScores: "scores",
-          myAccount: "account"
+          myAccount: "account",
+          myPage: "page",
+          mySelectedUser: "selectedUser"
       })
     },
     watch: {
@@ -62,18 +65,34 @@ export default {
       },
       myAccount: function() {
         this.getUserData();
+      },
+      myPage: function() {
+        this.getUserData();
+      },
+      mySelectedUser: function() {
+        this.getUserData();
       }
   },
   methods: {
     getUserData() {
+        /*
+      if (this.$store.state.page == "user") {
+          this.user = this.$store.state.account;
+      } else {
+          if (!this.$store.state.selectedUser)
+              return;
+
+          this.user = this.$store.state.selectedUser;
+      }
+      */
+        this.user = this.$store.state.employee;
       if (!this.$store.state.scores || !this.$store.state.account) return 0;
       const employeeScores = this.$store.state.scores.filter(item => {
         return (
-          item.employee == this.$store.state.account &&
+          item.employee == this.$store.state.employee &&
           item.status ===1
         )
       })
-      console.log(employeeScores)
       const scores = employeeScores.sort(function compare(a,b) {
         if (a.timestamp > b.timestamp)
           return -1;
@@ -81,7 +100,6 @@ export default {
           return 1;
         return 0;
       })
-      console.log('SORTED',scores)
         if (scores.length === 0) return
         this.score = scores[0].score || 0
 

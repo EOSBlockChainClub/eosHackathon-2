@@ -18,7 +18,7 @@ export default {
     ProviderTabs
   },
   mounted() {
-      this.$store.dispatch(Actions.SET_PAGE, 'enterprise');
+      this.$store.dispatch(Actions.SET_PAGE, 'provider');
   },
 }
 </script>

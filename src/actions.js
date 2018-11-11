@@ -1,6 +1,7 @@
 export const Actions = {
     SET_PAGE: "SetPage",
     SET_EOS: "SetEos",
+    SET_SELCTED_USER: "SetSelectedUser",
     SET_SCATTER: "SetScatter",
     SET_IDENTITY: "SetIdentity",
     SET_EMPLOYEES: "SetEmployees",
