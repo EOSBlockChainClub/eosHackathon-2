@@ -51,9 +51,8 @@
                 }
                 this.scatter = ScatterJS.scatter;
                 this.$store.dispatch(Actions.SET_SCATTER, ScatterJS.scatter);
-                if (this.scatter.identity)
-                    this.$store.dispatch(Actions.SET_IDENTITY, this.scatter.identity);
-            })
+                this.loadIdentity();
+            });
             this.loadData();
         },
 
@@ -65,11 +64,16 @@
         },
 
         methods: {
-            login() {
-                this.scatter.getIdentity({accounts: [this.$store.state.network]});
+            async login() {
+                await this.scatter.getIdentity({accounts: [this.$store.state.network]});
+                this.reload();
             },
-            logout() {
-                this.scatter.forgetIdentity();
+            async logout() {
+                await this.scatter.forgetIdentity();
+                this.reload();
+            },
+            loadIdentity() {
+                this.$store.dispatch(Actions.SET_IDENTITY, this.scatter.identity);
             },
             setEosInstance(){
                 if(this.account){
@@ -78,7 +82,10 @@
                     this.$store.dispatch(Actions.SET_EOS, new Api({ rpc: this.$store.state.rpc }));
                 }
             },
-
+            reload() {
+                this.loadData();
+                this.loadIdentity();
+            },
             async loadData(){
                 await this.loadEmployees();
                 await this.loadEmployers();
