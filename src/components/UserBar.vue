@@ -52,18 +52,22 @@ export default {
     },
     computed: {
       ...mapState({
-          myScores: "scores"
+          myScores: "scores",
+          myAccount: "account"
       })
   },
     watch: {
       myScores: function() {
           this.getUserData();
+      },
+      myAccount: function() {
+        this.getUserData();
       }
   },
   methods: {
     getUserData() {
       console.log(JSON.stringify(this.$store.state.scores))
-      if (!this.$store.state.scores) return 0
+      if (!this.$store.state.scores || !this.$store.state.account) return 0;
       const employeeScores = this.$store.state.scores.filter(item => item.employee == this.$store.state.account)
       const scores = employeeScores.sort(function compare(a,b) {
         if (a.timestamp < b.timestamp)
